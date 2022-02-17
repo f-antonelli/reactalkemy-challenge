@@ -1,7 +1,9 @@
-import Menu from "components/Menu";
-import { useState } from "react";
+import MenuContext from "context/MenuContext";
+import { useContext, useState } from "react";
 
 const Dish = ({ dish }) => {
+  const { addDish }  = useContext(MenuContext);
+  console.log(addDish)
   const {
     healthScore,
     id,
@@ -22,10 +24,10 @@ const Dish = ({ dish }) => {
     score: healthScore,
   });
 
-  // const sendItem = () => {
-  //   console.log('entre');
-  //   <Menu menuItem={{menuItem}} />
-  // };
+  const sendItem = () => {
+    addDish(menuItem);
+    console.log(menuItem)
+  };
 
   return (
     <div className="card m-3" style={{ minWidth: "18rem", maxWidth: "20rem" }}>
@@ -34,7 +36,7 @@ const Dish = ({ dish }) => {
         <p className="card-text fw-bold fz-500">{title}</p>
       </div>
       <span>{vegan === true && "Vegano"}</span>
-      <button onClick={() => console.log(menuItem)}>+</button>
+      <button onClick={sendItem}>+</button>
     </div>
   );
 };

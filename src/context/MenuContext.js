@@ -1,26 +1,19 @@
-const { createContext, useState } = require("react");
+import { createContext, useState } from "react";
 
 const MenuContext = createContext();
 
 const MenuProvider = ({ children }) => {
   const [menu, setMenu] = useState([]);
-  console.log(menu)
+  console.log(menu);
 
   const addDish = (dish) => {
-    console.log(dish)
+    console.log(dish);
     setMenu([...menu, dish]);
-  }
+  };
 
-  const data = {
-    menu,
-    addDish
-  }
 
-  return (
-    <MenuContext.Provider value={(data)}>
-      {children}
-    </MenuContext.Provider>
-  );
+
+  return <MenuContext.Provider value={addDish}>{children}</MenuContext.Provider>;
 };
 
 export { MenuProvider };
