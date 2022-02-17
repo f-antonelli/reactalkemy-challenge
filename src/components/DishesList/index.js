@@ -1,14 +1,13 @@
 import Spinner from "components/Spinner";
 import Dish from "../Dish";
 
-export default function DishesList({ dishes, loading }) {
+export default function DishesList({ dishes, loading, addDish }) {
 
-  if (loading) return <Spinner />
-  
+  if (loading) return <Spinner />;
   return (
     <div className="card-group d-flex justify-content-center flex-wrap">
-      {dishes.map(({ id, title, image }) => (
-        <Dish key={id} id={id} title={title} image={image} />
+      {dishes.map((dish) => (
+        <Dish key={dish.id} dish={{...dish}} />
       ))}
     </div>
   );

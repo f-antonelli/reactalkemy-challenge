@@ -1,17 +1,17 @@
 import axios from "axios";
 import { API_KEY, API_URL } from "./settings";
 
-const fromApiResponseToGifs = (apiResponse) => {
+const fromApiResponseToDish = (apiResponse) => {
   const { results = [] } = apiResponse.data;
   const dishes = results.map((dish) => {
-    const { image, title, id } = dish;
-    return { title, id, image };
+    const { image, title, id, healthScore, readyInMinutes, pricePerServing, vegan } = dish;
+    return { image, title, id, healthScore, readyInMinutes, pricePerServing, vegan };
   });
   return dishes;
 };
 
-export default function getDishes({ type = "all", keyword = "meal" }) {
-  const apiURL = `${API_URL}/complexSearch?apiKey=${API_KEY}&query=${keyword}&diet=${type}`;
+export default function getDishes({ typeDish = "all", keyword = "meal" }) {
+  const apiURL = `${API_URL}/complexSearch?apiKey=${API_KEY}&query=${keyword}&diet=${typeDish}&addRecipeInformation=true`;
 
-  return axios.get(apiURL).then(fromApiResponseToGifs);
+  return axios.get(apiURL).then(fromApiResponseToDish);
 }
