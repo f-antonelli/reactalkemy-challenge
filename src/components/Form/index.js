@@ -18,6 +18,8 @@ const Form = ({ setKeyword, setTypeDish }) => {
   const handleChangeType = (e) => setTypeDish(e.target.value);
 
   return (
+    <div>
+      <h2>Search bar</h2>
     <form
       onSubmit={handleSubmit}
       className="input-group mb-3"
@@ -52,6 +54,7 @@ const Form = ({ setKeyword, setTypeDish }) => {
         &#x1F50D;{" "}
       </button>
     </form>
+    </div>
   );
 };
 

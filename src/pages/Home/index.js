@@ -10,7 +10,7 @@ const Home = () => {
   const { dishes, loading } = useDishes({ keyword, typeDish });
 
   return (
-    <div>
+    <div className="bg-success p-2 text-dark bg-opacity-50">
       <Menu />
       <Form setKeyword={setKeyword} setTypeDish={setTypeDish} />
       <DishesList dishes={dishes} loading={loading} />

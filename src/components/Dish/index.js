@@ -1,9 +1,11 @@
+import ModalDetails from "components/ModalDetails";
 import MenuContext from "context/MenuContext";
 import { useContext, useState } from "react";
 
 const Dish = ({ dish }) => {
-  const { addDish }  = useContext(MenuContext);
-  console.log(addDish)
+  const [menu, setMenu, addDish] = useContext(MenuContext);
+  const [open, setOpen] = useState(false);
+
   const {
     healthScore,
     id,
@@ -26,18 +28,41 @@ const Dish = ({ dish }) => {
 
   const sendItem = () => {
     addDish(menuItem);
-    console.log(menuItem)
+  };
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
   };
 
   return (
-    <div className="card m-3" style={{ minWidth: "18rem", maxWidth: "20rem" }}>
-      <img src={image} alt={`dish${id}`} />
-      <div className="card-body">
-        <p className="card-text fw-bold fz-500">{title}</p>
+    <>
+      <div
+        className="card border-5 m-3 border-start"
+        style={{ minWidth: "18rem", maxWidth: "20rem" }}
+      >
+        <img className="card-img-top" src={image} alt={`dish${id}`} />
+        <div className="card-body">
+          <p className="card-text fw-bold fz-500">{title}</p>
+        </div>
+        <span className="badge bg-success text-wrap my-3">
+          {vegan === true && "Vegano"}
+        </span>
+        <div className="card-footer d-grid gap-2 d-md-flex justify-content-md-end">
+          <button className="btn btn-secondary me-md-2" onClick={handleClickOpen}>
+            View details
+          </button>
+          <button className="btn btn-success" onClick={sendItem}>
+            +
+          </button>
+        </div>
       </div>
-      <span>{vegan === true && "Vegano"}</span>
-      <button onClick={sendItem}>+</button>
-    </div>
+
+      <ModalDetails open={open} handleClose={handleClose} menuItem={menuItem} />
+    </>
   );
 };
 
