@@ -30,4 +30,4 @@ To deploy this project run
 
 ## Demo
 
-![alt-text](https://media.giphy.com/media/ay2BKb2eszYKg9Vtbf/giphy-downsized-large.gif)
+![alt-text](https://user-images.githubusercontent.com/77996387/154850867-3891e465-60e5-4af0-a0b0-c141defa1f56.gif)
