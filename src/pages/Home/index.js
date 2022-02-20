@@ -1,5 +1,5 @@
 import DishesList from "components/DishesList";
-import Form from "components/Form";
+import SearchForm from "components/SearchForm";
 import Menu from "components/Menu";
 import { useDishes } from "hooks/useDishes";
 import { useState } from "react";
@@ -12,7 +12,7 @@ const Home = () => {
   return (
     <div className="bg-success p-2 text-dark bg-opacity-50">
       <Menu />
-      <Form setKeyword={setKeyword} setTypeDish={setTypeDish} />
+      <SearchForm setKeyword={setKeyword} setTypeDish={setTypeDish} />
       <DishesList dishes={dishes} loading={loading} />
     </div>
   );

@@ -3,7 +3,7 @@ import MenuContext from "context/MenuContext";
 import { useContext, useState } from "react";
 
 const Dish = ({ dish }) => {
-  const [menu, setMenu, addDish] = useContext(MenuContext);
+  const [,, addDish] = useContext(MenuContext);
   const [open, setOpen] = useState(false);
 
   const {

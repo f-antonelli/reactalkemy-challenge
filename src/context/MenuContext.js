@@ -1,15 +1,25 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
+import Swal from "sweetalert2";
 
 const MenuContext = createContext();
 
+const getMenu = JSON.parse(localStorage.getItem("menu"));
+const initialState = getMenu === null ? [] : getMenu;
+
 const MenuProvider = ({ children }) => {
-  const [menu, setMenu] = useState([]);
+  const [menu, setMenu] = useState(initialState);
+  useEffect(() => {
+    localStorage.setItem("menu", JSON.stringify(menu));
+  }, [menu]);
 
   const addDish = (dish) => {
     const itemsInMenu = menu.find((e) => e.id === dish.id);
-
-    if (itemsInMenu) console.log("el plato ya existe");
-    else if (menu.length >= 4) console.log("El menu esta lleno");
+    if (itemsInMenu)
+      Swal.fire({
+        icon: "error",
+        title: "The dish already exists on menu",
+      });
+    else if (menu.length >= 4) Swal.fire("Menu is full");
     else setMenu([...menu, dish]);
   };
 

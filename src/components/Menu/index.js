@@ -2,15 +2,8 @@ import MenuContext from "context/MenuContext";
 import { useContext } from "react";
 
 const Menu = () => {
-  const [
-    menu,
-    setMenu,
-    addDish,
-    removeDish,
-    totalPrice,
-    totalScore,
-    totalTime,
-  ] = useContext(MenuContext);
+  const [menu, , , removeDish, totalPrice, totalScore, totalTime] =
+    useContext(MenuContext);
 
   return (
     <div>
@@ -60,7 +53,7 @@ const Menu = () => {
           </div>
         </>
       ) : (
-        <p>Menu is emply, please choose a dish...</p>
+        <p className="fs-3 text-secondary">Menu is emply, please choose a dish...</p>
       )}
     </div>
   );
