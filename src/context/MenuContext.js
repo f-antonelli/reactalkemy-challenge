@@ -14,17 +14,23 @@ const MenuProvider = ({ children }) => {
 
   const addDish = (dish) => {
     const itemsInMenu = menu.find((e) => e.id === dish.id);
+    const isVegan = menu.filter((item) => item.isVegan === true);
+    const notVegan = menu.filter((item) => item.isVegan !== true);
+
     if (itemsInMenu)
       Swal.fire({
         icon: "error",
         title: "The dish already exists on menu",
       });
     else if (menu.length >= 4) Swal.fire("Menu is full");
+    else if (isVegan.length >= 2 && dish.isVegan)
+      Swal.fire("Vegan dishes are full");
+    else if (notVegan.length >= 2 && !dish.isVegan)
+      Swal.fire("Not Vegan dishes are full");
     else setMenu([...menu, dish]);
   };
 
   const removeDish = (dish) => {
-    console.log(dish);
     setMenu(menu.filter((item) => item.id !== dish.id));
   };
 

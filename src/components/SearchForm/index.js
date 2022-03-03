@@ -8,7 +8,7 @@ const SearchForm = ({ setKeyword, setTypeDish }) => {
     dishName: "",
   });
   const { dishName } = input;
-  console.log(dishName)
+
   const handleSubmit = (e) => {
     setKeyword(dishName.trim().toLowerCase());
     reset();
